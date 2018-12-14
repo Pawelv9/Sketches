@@ -27,6 +27,7 @@ const sketch = () => {
           color: random.pick(palette),
           // radius: random.value() * 0.005,
           radius,
+          rotation: random.noise2D(u, v),
           position: [u, v]
         });
       }
@@ -43,7 +44,7 @@ const sketch = () => {
     context.fillRect(0, 0, width, height);
 
     points.forEach(data => {
-      const { position, radius, color } = data;
+      const { position, radius, color, rotation } = data;
 
       const [u, v] = position;
 
@@ -54,7 +55,7 @@ const sketch = () => {
       context.fillStyle = color;
       context.font = `${radius * width}px "Heebo"`
       context.translate(x, y);
-      context.rotate(0.65);
+      context.rotate(rotation);
       context.fillText('||', 0, 0); 
       context.restore();
     });
