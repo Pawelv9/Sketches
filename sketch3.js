@@ -50,12 +50,13 @@ const sketch = () => {
       const x = lerp(margin, width - margin, u);
       const y = lerp(margin, height - margin, v);
 
-      // context.save();
+      context.save();
       context.fillStyle = color;
       context.font = `${radius * width}px "Heebo"`
-      context.rotate(1);
-      context.fillText('*', x, y); 
-      // context.restore();
+      context.translate(x, y);
+      context.rotate(0.65);
+      context.fillText('||', 0, 0); 
+      context.restore();
     });
   };
 };
